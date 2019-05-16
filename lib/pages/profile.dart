@@ -9,7 +9,10 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      color: Colors.white,
+      child: Center(
+        child: Text("Search"),
+      ),
     );
   }
 }

@@ -9,7 +9,10 @@ class _ChatsState extends State<Chats> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      color: Colors.white,
+      child: Center(
+        child: Text("chats"),
+      ),
     );
   }
 }

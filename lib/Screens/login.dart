@@ -215,9 +215,8 @@ void showLoginSheet(BuildContext context) {
                               color: Colors.indigoAccent,
                               child: Text("Get Started",
                                   style: TextStyle(fontFamily: "Baloo")),
-                              onPressed: (){
-                                _login();
-                                Navigator.pop(context);
+                              onPressed: () {
+                                _login(context);
                               },
                             ),
                           ],
@@ -266,16 +265,27 @@ void showLoginSheet(BuildContext context) {
       });
 }
 
-Future<void> _login() async {
+Future<void> _login(BuildContext context) async {
   if (formKey.currentState.validate()) {
     formKey.currentState.save();
     firebaseUser = await firebaseAuth
         .signInWithEmailAndPassword(email: email, password: password)
         .then((onValue) {
-          print(onValue.uid);
-        }
-        ).catchError((onError){
-          print(onError);
-        });
+      print(onValue.uid);
+    }).catchError((onError) {
+      print(onError);
+      showDialog(
+          context: context,
+          builder: (context) {
+            return SimpleDialog(
+              contentPadding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              title:
+                  Text("Login error!", style: TextStyle(fontFamily: "Baloo")),
+              children: <Widget>[
+                Text("Failed to log you in with these email & password"),
+              ],
+            );
+          });
+    });
   }
 }

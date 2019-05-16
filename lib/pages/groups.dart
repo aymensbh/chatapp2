@@ -9,7 +9,10 @@ class _GroupsState extends State<Groups> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      color: Colors.white,
+      child: Center(
+        child: Text("Groups"),
+      ),
     );
   }
 }

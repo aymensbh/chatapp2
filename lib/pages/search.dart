@@ -9,7 +9,10 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      color: Colors.white,
+      child: Center(
+        child: Text("Search"),
+      ),
     );
   }
 }
