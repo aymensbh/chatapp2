@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     color2 = Colors.black;
     color3 = Colors.black;
 
-    setState(() {
+    
       switch (index) {
       case 0:
       color0=Colors.indigoAccent;
@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
       color3=Colors.indigoAccent;
         break;
     }
-    });
 
     
   }
@@ -84,7 +83,9 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             body: PageView(
               onPageChanged: (index){
-                change(index);
+                setState(() {
+                  change(index);
+                });
               },
               controller: _controller,
               children: <Widget>[
