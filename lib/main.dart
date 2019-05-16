@@ -12,16 +12,14 @@ class MyApp extends StatelessWidget {
       title: 'Chat app',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(80, 160, 160, 1),
-        accentColor: Colors.indigo,
+        accentColor: Colors.white,
         appBarTheme: AppBarTheme(elevation: 1),
         canvasColor: Colors.transparent,
         tabBarTheme: TabBarTheme(
           labelStyle: TextStyle(fontFamily: "Baloo"),
           unselectedLabelStyle: TextStyle(fontFamily: "Baloo"),
           labelColor: Colors.white,
-          indicator: BoxDecoration(
-            color: Colors.white,            
-          )
+
         ),
       ),
       home: Router(),
