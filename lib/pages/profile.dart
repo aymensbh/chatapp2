@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chat_app/Utils/firebasehelper.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -11,7 +12,12 @@ class _ProfileState extends State<Profile> {
     return Container(
       color: Colors.white,
       child: Center(
-        child: Text("Search"),
+        child: RaisedButton(
+          child: Text("disconnect"),
+          onPressed: (){
+            firebaseAuth.signOut();
+          },
+        ),
       ),
     );
   }

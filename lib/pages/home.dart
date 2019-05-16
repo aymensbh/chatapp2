@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:line_icons/line_icons.dart';
 import 'chats.dart';
 import 'groups.dart';
-
-
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   TabController _controller;
 
   @override
   void initState() {
-
-      _controller=new TabController(length: 2,vsync: this);
+    _controller = new TabController(length: 2, vsync: this);
 
     super.initState();
   }
@@ -31,23 +28,28 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chats"),
+        backgroundColor: Colors.indigoAccent,
+        title: Text(
+          "Chats",
+          style: TextStyle(fontFamily: "Baloo"),
+        ),
         bottom: TabBar(
           controller: _controller,
           tabs: <Widget>[
-          Tab(text: "Messages",),
-          Tab(text: "Groups",),            
+            Tab(
+              text: "Messages",
+              icon: Icon(LineIcons.comments_o),
+            ),
+            Tab(
+              text: "Groups",
+              icon: Icon(LineIcons.group),
+            ),
           ],
         ),
       ),
       body: TabBarView(
         controller: _controller,
-
-        children: <Widget>[
-          Chats(),
-          Groups()
-        ],
-
+        children: <Widget>[Chats(), Groups()],
       ),
       //floatin action button ????
     );

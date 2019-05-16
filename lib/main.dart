@@ -14,7 +14,11 @@ class MyApp extends StatelessWidget {
         primaryColor: Color.fromRGBO(80, 160, 160, 1),
         accentColor: Colors.indigo,
         appBarTheme: AppBarTheme(elevation: 1),
-        canvasColor: Colors.transparent
+        canvasColor: Colors.transparent,
+        tabBarTheme: TabBarTheme(
+          labelStyle: TextStyle(fontFamily: "Baloo"),
+          labelColor: Colors.white,
+        ),
       ),
       home: Router(),
       debugShowCheckedModeBanner: false,

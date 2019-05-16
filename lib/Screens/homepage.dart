@@ -5,6 +5,8 @@ import 'package:chat_app/pages/search.dart';
 import 'package:chat_app/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:line_icons/line_icons.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   IconButton(
-                    icon: Icon(OMIcons.home),
+                    icon: Icon(LineIcons.home),
                     onPressed: (){
                       _controller.animateToPage(
                       0,
@@ -79,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                     } 
                   ),
                   IconButton(
-                    icon: Icon(OMIcons.search),
+                    icon: Icon(LineIcons.search),
                     onPressed: (){
                       _controller.animateToPage(
                       1,
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     } 
                   ),
                   IconButton(
-                    icon: Icon(OMIcons.person),
+                    icon: Icon(LineIcons.user),
                     onPressed: (){
                       _controller.animateToPage(
                       2,
@@ -99,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                     } 
                   ),
                   IconButton(
-                    icon: Icon(OMIcons.settings),
+                    icon: Icon(LineIcons.cogs),
                     onPressed: (){
                       _controller.animateToPage(
                       3,
