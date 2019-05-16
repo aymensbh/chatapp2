@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
         canvasColor: Colors.transparent,
         tabBarTheme: TabBarTheme(
           labelStyle: TextStyle(fontFamily: "Baloo"),
+          unselectedLabelStyle: TextStyle(fontFamily: "Baloo"),
           labelColor: Colors.white,
+          indicator: BoxDecoration(
+            color: Colors.white,            
+          )
         ),
       ),
       home: Router(),
