@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                       }),
                   IconButton(
                       icon: Icon(
-                        LineIcons.cogs,
+                        LineIcons.gear,
                         color: color3,
                       ),
                       onPressed: () {

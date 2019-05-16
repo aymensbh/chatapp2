@@ -30,7 +30,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         backgroundColor: Colors.indigoAccent,
         title: Text(
-          "Chats",
+          "iChats",
           style: TextStyle(fontFamily: "Baloo"),
         ),
         bottom: TabBar(
