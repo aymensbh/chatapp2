@@ -20,41 +20,27 @@ class _HomePageState extends State<HomePage> {
       color3 = Colors.black;
 
   void change(int index) {
-    color0 = Colors.black;
-    color1 = Colors.black;
-    color2 = Colors.black;
-    color3 = Colors.black;
+    setState(() {
+      color0 = Colors.black;
+      color1 = Colors.black;
+      color2 = Colors.black;
+      color3 = Colors.black;
 
-    switch (index) {
-      case 0:
-        {
-          setState(() {
-            color0 = Colors.indigoAccent;
-          });
-        }
-        break;
-      case 1:
-        setState(() {
-          color1 = Colors.indigoAccent;
-        });
-
-        break;
-      case 2:
-        {
-          setState(() {
-            color2 = Colors.indigoAccent;
-          });
-        }
-
-        break;
-      case 3:
-        {
-          setState(() {
-            color3 = Colors.indigoAccent;
-          });
-        }
-        break;
-    }
+      switch (index) {
+        case 0:
+          color0 = Colors.indigoAccent;
+          break;
+        case 1:
+          color2 = Colors.indigoAccent;
+          break;
+        case 2:
+          color2 = Colors.indigoAccent;
+          break;
+        case 3:
+          color3 = Colors.indigoAccent;
+          break;
+      }
+    });
   }
 
   @override
