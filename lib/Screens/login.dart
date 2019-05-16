@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:chat_app/Utils/firebasehelper.dart';
+import 'package:line_icons/line_icons.dart';
 
 GlobalKey<FormState> formKey = GlobalKey<FormState>();
 String password, email;
+bool obs = false;
 
 void showLoginSheet(BuildContext context) {
   showModalBottomSheet(
@@ -160,6 +162,7 @@ void showLoginSheet(BuildContext context) {
                                   Container(
                                     margin: EdgeInsets.only(bottom: 4),
                                     child: TextFormField(
+                                      obscureText: obs,
                                       onSaved: (input) {
                                         password = input;
                                       },
