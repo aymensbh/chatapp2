@@ -1,6 +1,6 @@
-import 'package:chat_app/Screens/signup.dart';
 import 'package:flutter/material.dart';
 
+import 'signup.dart';
 import 'login.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -12,27 +12,87 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.indigoAccent,
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,  //work with design later
-          children: <Widget>[
-            Container(
-              child: Text("Hello there!"),
-            ),
-
-            RaisedButton(
-              child: Text("Login"),
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (ctx)=>new Login())),
-            ),
-
-            RaisedButton(
-              child: Text("Signup"),
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (ctx)=>new Signup())),
-            ),
-          ],
+        body: Container(
+          margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height / 8, left: 40, right: 40),
+          color: Colors.indigoAccent,
+          padding: MediaQuery.of(context).padding,
+          child: Column(
+            //work with design later
+            children: <Widget>[
+              Expanded(
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Welcome back!",
+                        style: TextStyle(
+                            fontSize: 46,
+                            color: Colors.white,
+                            fontFamily: "Baloo"),
+                      ),
+                      Text(
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+                        style: TextStyle(color: Colors.white54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.only(bottom: 8),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.indigoAccent,
+                            border: Border.all(color: Colors.white)),
+                        child: Material(
+                          child: InkWell(
+                              onTap: (){
+                                showLoginSheet(context);
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: MediaQuery.of(context).size.height / 16,
+                                child: Text("Login",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Baloo")),
+                              )),
+                        )),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 8),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.indigoAccent,
+                            border: Border.all(color: Colors.white)),
+                        child: Material(
+                          child: InkWell(
+                              onTap: (){
+                                showSignupSheet(context);
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: MediaQuery.of(context).size.height / 16,
+                                child: Text("Signup",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Baloo")),
+                              )),
+                        )),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
-      
     );
   }
 }
