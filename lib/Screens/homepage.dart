@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
         }else{
           return Scaffold(
             body: PageView(
+              controller: _controller,
               children: <Widget>[
                 Home(),
                 Search(),
@@ -62,6 +63,7 @@ class _HomePageState extends State<HomePage> {
 
             ),
             bottomNavigationBar: Container(
+              color: Colors.white,
               height: MediaQuery.of(context).size.height/10,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
