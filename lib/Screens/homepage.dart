@@ -25,7 +25,8 @@ class _HomePageState extends State<HomePage> {
     color2 = Colors.black;
     color3 = Colors.black;
 
-    switch (index) {
+    setState(() {
+      switch (index) {
       case 0:
       color0=Colors.indigoAccent;
         break;
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
       color3=Colors.indigoAccent;
         break;
     }
+    });
 
     
   }
