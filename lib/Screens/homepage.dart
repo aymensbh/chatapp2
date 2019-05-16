@@ -25,23 +25,36 @@ class _HomePageState extends State<HomePage> {
     color2 = Colors.black;
     color3 = Colors.black;
 
-    
-      switch (index) {
+    switch (index) {
       case 0:
-      color0=Colors.indigoAccent;
+        {
+          setState(() {
+            color0 = Colors.indigoAccent;
+          });
+        }
         break;
       case 1:
-      color2=Colors.indigoAccent;
+        setState(() {
+          color1 = Colors.indigoAccent;
+        });
+
         break;
       case 2:
-      color2=Colors.indigoAccent;
+        {
+          setState(() {
+            color2 = Colors.indigoAccent;
+          });
+        }
+
         break;
       case 3:
-      color3=Colors.indigoAccent;
+        {
+          setState(() {
+            color3 = Colors.indigoAccent;
+          });
+        }
         break;
     }
-
-    
   }
 
   @override
@@ -82,10 +95,8 @@ class _HomePageState extends State<HomePage> {
         } else {
           return Scaffold(
             body: PageView(
-              onPageChanged: (index){
-                setState(() {
-                  change(index);
-                });
+              onPageChanged: (index) {
+                change(index);
               },
               controller: _controller,
               children: <Widget>[
