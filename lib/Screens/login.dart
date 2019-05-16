@@ -90,6 +90,7 @@ void showLoginSheet(BuildContext context) {
                   )),
               GestureDetector(
                 onTap: () {
+                  Navigator.pop(context);
                   showDialog(
                       context: context,
                       builder: (ctx) {
@@ -214,7 +215,10 @@ void showLoginSheet(BuildContext context) {
                               color: Colors.indigoAccent,
                               child: Text("Get Started",
                                   style: TextStyle(fontFamily: "Baloo")),
-                              onPressed: _login,
+                              onPressed: (){
+                                _login();
+                                Navigator.pop(context);
+                              },
                             ),
                           ],
                         );

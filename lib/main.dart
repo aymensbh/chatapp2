@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color.fromRGBO(80, 160, 160, 1),
         accentColor: Colors.indigo,
-        appBarTheme: AppBarTheme(elevation: 1)
+        appBarTheme: AppBarTheme(elevation: 1),
+        canvasColor: Colors.transparent
       ),
       home: Router(),
       debugShowCheckedModeBanner: false,
