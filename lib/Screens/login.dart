@@ -318,3 +318,8 @@ Future<void> _googleSignin(BuildContext context) async {
     });
   
 }
+
+
+  Future<void> googleSignOut() async {
+    googleSignIn.disconnect();
+  }
