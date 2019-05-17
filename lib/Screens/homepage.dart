@@ -1,3 +1,4 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:chat_app/Utils/firebasehelper.dart';
 import 'package:chat_app/pages/home.dart';
 import 'package:chat_app/pages/profile.dart';
@@ -14,40 +15,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   PageController _controller;
-  Color color0 = Colors.indigoAccent,
-      color1 = Colors.black,
-      color2 = Colors.black,
-      color3 = Colors.black;
-
-  void change(int index) {
-
-      color0 = Colors.black;
-      color1 = Colors.black;
-      color2 = Colors.black;
-      color3 = Colors.black;
-
-      if(index==0)
-        setState(() {
-          color0=Colors.indigoAccent;
-        });
-      if(index==1)
-        setState(() {
-          color1=Colors.indigoAccent;
-        });
-      if(index==2)
-        setState(() {
-          color2=Colors.indigoAccent;
-        });
-      if(index==3)
-        setState(() {
-          color3=Colors.indigoAccent;
-        });
-      
-  }
+  int _selectedIndex;
 
   @override
   void initState() {
-    _controller = new PageController(initialPage: 0);
+    _controller=new PageController(initialPage: 0);
+    _selectedIndex=0;
     super.initState();
   }
 
@@ -82,76 +55,45 @@ class _HomePageState extends State<HomePage> {
           ));
         } else {
           return Scaffold(
-            body: PageView(
-              onPageChanged: (index) {
-                change(index);
-              },
-              controller: _controller,
-              children: <Widget>[
-                Home(),
-                Search(),
-                Profile(),
-                Settings(),
-              ],
-            ),
-            bottomNavigationBar: Container(
-              color: Colors.white,
-              height: MediaQuery.of(context).size.height / 10,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              body: PageView(
+                controller: _controller,
                 children: <Widget>[
-                  IconButton(
-                      icon: Icon(
-                        LineIcons.home,
-                        color: color0,
-                      ),
-                      onPressed: () {
-                        _controller.animateToPage(
-                          0,
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.ease,
-                        );
-                      }),
-                  IconButton(
-                      icon: Icon(
-                        LineIcons.search,
-                        color: color1,
-                      ),
-                      onPressed: () {
-                        _controller.animateToPage(
-                          1,
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.ease,
-                        );
-                      }),
-                  IconButton(
-                      icon: Icon(
-                        LineIcons.user,
-                        color: color2,
-                      ),
-                      onPressed: () {
-                        _controller.animateToPage(
-                          2,
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.ease,
-                        );
-                      }),
-                  IconButton(
-                      icon: Icon(
-                        LineIcons.gear,
-                        color: color3,
-                      ),
-                      onPressed: () {
-                        _controller.animateToPage(
-                          3,
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.ease,
-                        );
-                      }),
+                  Home(),
+                  Search(),
+                  Profile(),
+                  Settings(),
                 ],
               ),
-            ),
-          );
+              bottomNavigationBar: BottomNavyBar(
+                currentIndex: _selectedIndex,
+                
+                // showElevation: true, // use this to remove appBar's elevation
+                onItemSelected: (index) => setState(() {
+                      _selectedIndex = index;
+                      _controller.animateToPage(index,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.ease);
+                    }),
+                items: [
+                  BottomNavyBarItem(
+                    icon: Icon(LineIcons.home),
+                    title: Text('Home',style: TextStyle(fontFamily: "Baloo"),),
+                    activeColor: Colors.red,
+                  ),
+                  BottomNavyBarItem(
+                      icon: Icon(LineIcons.search),
+                      title: Text('search',style: TextStyle(fontFamily: "Baloo"),),
+                      activeColor: Colors.purpleAccent),
+                  BottomNavyBarItem(
+                      icon: Icon(LineIcons.user),
+                      title: Text('Profile',style: TextStyle(fontFamily: "Baloo"),),
+                      activeColor: Colors.pink),
+                  BottomNavyBarItem(
+                      icon: Icon(LineIcons.gear),
+                      title: Text('Settings',style: TextStyle(fontFamily: "Baloo"),),
+                      activeColor: Colors.blue),
+                ],
+              ));
         }
       },
     );
