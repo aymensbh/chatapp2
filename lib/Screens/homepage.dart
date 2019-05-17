@@ -20,31 +20,31 @@ class _HomePageState extends State<HomePage> {
   final List<BubbledNavigationBarItem> barItems = [
     BubbledNavigationBarItem(
         icon: Icon(LineIcons.home),
-        activeIcon: Icon(LineIcons.home, color: Colors.indigo),
+        activeIcon: Icon(LineIcons.home, color: Colors.white),
         title: Text(
           "Home",
-          style: TextStyle(fontFamily: "Baloo"),
+          style: TextStyle(fontFamily: "Baloo",color: Colors.white),
         )),
     BubbledNavigationBarItem(
         icon: Icon(LineIcons.search),
-        activeIcon: Icon(LineIcons.search, color: Colors.indigo),
+        activeIcon: Icon(LineIcons.search, color: Colors.white),
         title: Text(
           "Search",
-          style: TextStyle(fontFamily: "Baloo"),
+          style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
     BubbledNavigationBarItem(
         icon: Icon(LineIcons.user),
-        activeIcon: Icon(LineIcons.user, color: Colors.indigo),
+        activeIcon: Icon(LineIcons.user, color: Colors.white),
         title: Text(
           "User",
-          style: TextStyle(fontFamily: "Baloo"),
+          style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
     BubbledNavigationBarItem(
         icon: Icon(LineIcons.gear),
-        activeIcon: Icon(LineIcons.gear, color: Colors.indigo),
+        activeIcon: Icon(LineIcons.gear, color: Colors.white),
         title: Text(
           "Gear",
-          style: TextStyle(fontFamily: "Baloo"),
+          style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
   ];
 
@@ -88,6 +88,11 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             body: PageView(
               controller: _controller,
+              onPageChanged: (index){
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
               children: <Widget>[
                 Home(),
                 Search(),
