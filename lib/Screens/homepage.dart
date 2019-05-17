@@ -16,16 +16,16 @@ class _HomePageState extends State<HomePage> {
   PageController _controller;
   MenuPositionController _controller2;
 
-
   final List<BubbledNavigationBarItem> barItems = [
     BubbledNavigationBarItem(
         icon: Icon(LineIcons.home),
         activeIcon: Icon(LineIcons.home, color: Colors.white),
         title: Text(
           "Home",
-          style: TextStyle(fontFamily: "Baloo",color: Colors.white),
+          style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
     BubbledNavigationBarItem(
+        bubbleColor: Colors.teal,
         icon: Icon(LineIcons.search),
         activeIcon: Icon(LineIcons.search, color: Colors.white),
         title: Text(
@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
     BubbledNavigationBarItem(
+        bubbleColor: Colors.green,
         icon: Icon(LineIcons.user),
         activeIcon: Icon(LineIcons.user, color: Colors.white),
         title: Text(
@@ -40,6 +41,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
     BubbledNavigationBarItem(
+        bubbleColor: Colors.pink,
         icon: Icon(LineIcons.gear),
         activeIcon: Icon(LineIcons.gear, color: Colors.white),
         title: Text(
@@ -62,37 +64,38 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-          return Scaffold(
-            body: PageView(
-              controller: _controller,
-              onPageChanged: (index){
-                setState(() {
-                  _controller2.animateToPosition(index);
-                });
-              },
-              children: <Widget>[
-                Home(),
-                Search(),
-                Profile(),
-                Settings(),
-              ],
-            ),
-            bottomNavigationBar: BubbledNavigationBar(
-              items: barItems,
-              controller: _controller2,
-              itemMargin: EdgeInsets.only(left: 4,right: 4),
-              animationCurve: Curves.ease,
-              animationDuration: Duration(milliseconds: 300),
-              backgroundColor: Colors.white,
-              onTap: (index) {
-                setState(() {
-                  _controller2.animateToPosition(index);
-                });
-
-                _controller.animateToPage(index,
-                    curve: Curves.ease, duration: Duration(milliseconds: 300));
-              },
-            ),
-          );
-        }
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: PageView(
+          controller: _controller,
+          physics: NeverScrollableScrollPhysics(),
+          // onPageChanged: (index) {
+          //   print(index);
+          //   _controller2.animateToPosition(index,
+          //       duration: Duration(milliseconds: 300));
+          // },
+          children: <Widget>[
+            Home(),
+            Search(),
+            Profile(),
+            Settings(),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BubbledNavigationBar(
+        items: barItems,
+        controller: _controller2,
+        itemMargin: EdgeInsets.only(left: 4, right: 4),
+        animationCurve: Curves.ease,
+        animationDuration: Duration(milliseconds: 300),
+        backgroundColor: Colors.white,
+        onTap: (index) {
+          print(index);
+          _controller.animateToPage(index,
+              curve: Curves.ease, duration: Duration(milliseconds: 300));
+        },
+      ),
+    );
+  }
 }
