@@ -21,7 +21,7 @@ dependencies:
   firebase_auth:
   firebase_core:
   firebase_database:
-  splashy_bottom_app_bar: ^0.1.0
+  bubbled_navigation_bar: ^0.0.3
   firebase_storage:
   image_picker:
   outline_material_icons: 

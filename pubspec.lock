@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  bubbled_navigation_bar:
+    dependency: "direct main"
+    description:
+      name: bubbled_navigation_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   cached_network_image:
     dependency: "direct main"
     description:
@@ -212,13 +219,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.5"
-  splashy_bottom_app_bar:
-    dependency: "direct main"
-    description:
-      name: splashy_bottom_app_bar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0"
   sqflite:
     dependency: transitive
     description:
