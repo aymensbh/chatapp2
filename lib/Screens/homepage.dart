@@ -4,7 +4,6 @@ import 'package:chat_app/pages/profile.dart';
 import 'package:chat_app/pages/search.dart';
 import 'package:chat_app/pages/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
 
@@ -15,7 +14,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   PageController _controller;
-  int _currentIndex = 0;
+  MenuPositionController _controller2;
+
 
   final List<BubbledNavigationBarItem> barItems = [
     BubbledNavigationBarItem(
@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     _controller = new PageController(initialPage: 0);
-    _currentIndex = 0;
     super.initState();
   }
 
@@ -63,36 +62,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: firebaseAuth.currentUser(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(
-              child: Scaffold(
-            appBar: AppBar(
-              title: Text(
-                //we can work with this later
-                "Loading..",
-              ),
-              elevation: 0,
-            ),
-            body: Container(
-              child: Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
-              ),
-            ),
-          ));
-        } else {
           return Scaffold(
             body: PageView(
               controller: _controller,
-              // onPageChanged: (index){
-              //   setState(() {
-              //     _currentIndex = index;
-              //   });
-              // },
+              onPageChanged: (index){
+                setState(() {
+                  _controller2.animateToPosition(index);
+                });
+              },
               children: <Widget>[
                 Home(),
                 Search(),
@@ -102,19 +79,20 @@ class _HomePageState extends State<HomePage> {
             ),
             bottomNavigationBar: BubbledNavigationBar(
               items: barItems,
+              controller: _controller2,
+              itemMargin: EdgeInsets.only(left: 4,right: 4),
+              animationCurve: Curves.ease,
+              animationDuration: Duration(milliseconds: 300),
               backgroundColor: Colors.white,
               onTap: (index) {
                 setState(() {
-                  _currentIndex = index;
+                  _controller2.animateToPosition(index);
                 });
 
-                // _controller.animateToPage(index,
-                //     curve: Curves.ease, duration: Duration(milliseconds: 300));
+                _controller.animateToPage(index,
+                    curve: Curves.ease, duration: Duration(milliseconds: 300));
               },
             ),
           );
         }
-      },
-    );
-  }
 }
