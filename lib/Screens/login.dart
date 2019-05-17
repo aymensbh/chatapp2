@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:chat_app/Utils/firebasehelper.dart';
-import 'package:line_icons/line_icons.dart';
+// import 'package:line_icons/line_icons.dart';
 
 GlobalKey<FormState> formKey = GlobalKey<FormState>();
 String password, email;
@@ -64,32 +65,35 @@ void showLoginSheet(BuildContext context) {
                       ],
                     )),
               ),
-              Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  height: MediaQuery.of(context).size.height / 16,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 240, 240, 1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width / 20,
-                            left: 8),
-                        child: Icon(GroovinMaterialIcons.google,
-                            color: Colors.deepOrange),
-                      ),
-                      Container(
-                          child: Text(
-                        "Google Login",
-                        style: TextStyle(
-                            color: Colors.deepOrange, fontFamily: "Baloo"),
-                      ))
-                    ],
-                  )),
+              GestureDetector(
+                onTap: ()=>_googleSignin(context),
+                              child: Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.height / 16,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(255, 240, 240, 1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(
+                              right: MediaQuery.of(context).size.width / 20,
+                              left: 8),
+                          child: Icon(GroovinMaterialIcons.google,
+                              color: Colors.deepOrange),
+                        ),
+                        Container(
+                            child: Text(
+                          "Google Login",
+                          style: TextStyle(
+                              color: Colors.deepOrange, fontFamily: "Baloo"),
+                        ))
+                      ],
+                    )),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
@@ -291,4 +295,26 @@ Future<void> _login(BuildContext context) async {
           });
     });
   }
+}
+
+Future<void> _googleSignin(BuildContext context) async {
+
+    googleSignIn=GoogleSignIn(scopes: ["email",'https://www.googleapis.com/auth/contacts.readonly',]);
+    await googleSignIn.signIn().then((onValue){
+      print(onValue.email);
+    }).catchError((onError){
+      showDialog(
+          context: context,
+          builder: (context) {
+            return SimpleDialog(
+              contentPadding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              title:
+                  Text("Login error!", style: TextStyle(fontFamily: "Baloo")),
+              children: <Widget>[
+                Text("Failed to log you in :("),
+              ],
+            );
+          });
+    });
+  
 }
