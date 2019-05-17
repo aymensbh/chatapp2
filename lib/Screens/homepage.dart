@@ -88,11 +88,11 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             body: PageView(
               controller: _controller,
-              onPageChanged: (index){
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
+              // onPageChanged: (index){
+              //   setState(() {
+              //     _currentIndex = index;
+              //   });
+              // },
               children: <Widget>[
                 Home(),
                 Search(),
