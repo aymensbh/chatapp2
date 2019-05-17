@@ -6,7 +6,7 @@ import 'package:chat_app/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:splashy_bottom_app_bar/splashy_bottom_app_bar.dart';
+import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,27 +16,36 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   PageController _controller;
   int _currentIndex = 0;
-  final List<BarItem> barItems = [
-    BarItem(
-      text: "Home",
-      iconData: LineIcons.home,
-      color: Colors.indigo,
-    ),
-    BarItem(
-      text: "Search",
-      iconData: LineIcons.search,
-      color: Colors.indigo,
-    ),
-    BarItem(
-      text: "Profile",
-      iconData: LineIcons.user,
-      color: Colors.indigo,
-    ),
-    BarItem(
-      text: "Settings",
-      iconData: LineIcons.gear,
-      color: Colors.teal,
-    ),
+
+  final List<BubbledNavigationBarItem> barItems = [
+    BubbledNavigationBarItem(
+        icon: Icon(LineIcons.home),
+        activeIcon: Icon(LineIcons.home, color: Colors.indigo),
+        title: Text(
+          "Home",
+          style: TextStyle(fontFamily: "Baloo"),
+        )),
+    BubbledNavigationBarItem(
+        icon: Icon(LineIcons.search),
+        activeIcon: Icon(LineIcons.search, color: Colors.indigo),
+        title: Text(
+          "Search",
+          style: TextStyle(fontFamily: "Baloo"),
+        )),
+    BubbledNavigationBarItem(
+        icon: Icon(LineIcons.user),
+        activeIcon: Icon(LineIcons.user, color: Colors.indigo),
+        title: Text(
+          "User",
+          style: TextStyle(fontFamily: "Baloo"),
+        )),
+    BubbledNavigationBarItem(
+        icon: Icon(LineIcons.gear),
+        activeIcon: Icon(LineIcons.gear, color: Colors.indigo),
+        title: Text(
+          "Gear",
+          style: TextStyle(fontFamily: "Baloo"),
+        )),
   ];
 
   @override
@@ -86,15 +95,16 @@ class _HomePageState extends State<HomePage> {
                 Settings(),
               ],
             ),
-            bottomNavigationBar: SplashyBottomAppBar(
-              iconSize: MediaQuery.of(context).size.width * 0.08,
-              currentIndex: _currentIndex,
+            bottomNavigationBar: BubbledNavigationBar(
               items: barItems,
+              backgroundColor: Colors.white,
               onTap: (index) {
                 setState(() {
                   _currentIndex = index;
-                  _controller.animateToPage(index, curve: Curves.ease,duration: Duration(milliseconds: 300));
                 });
+
+                // _controller.animateToPage(index,
+                //     curve: Curves.ease, duration: Duration(milliseconds: 300));
               },
             ),
           );
