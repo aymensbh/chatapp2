@@ -29,7 +29,7 @@ class _MessageState extends State<Message> {
                 margin: EdgeInsets.only(left: 4, right: 12),
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(widget.uimg),
-                  maxRadius: 28,
+                  maxRadius: 30,
                 ),
               ),
               Expanded(
