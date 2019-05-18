@@ -1,3 +1,4 @@
+import 'package:chat_app/widgets.dart/message.dart';
 import 'package:flutter/material.dart';
 
 class Conversation extends StatefulWidget {
@@ -9,10 +10,7 @@ class _ConversationState extends State<Conversation> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text("Conversations"),
-      ),
+      
     );
   }
 }

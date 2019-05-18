@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/Utils/firebasehelper.dart';
+import 'package:line_icons/line_icons.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -9,15 +10,14 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: RaisedButton(
-          child: Text("disconnect"),
-          onPressed: (){
-            firebaseAuth.signOut();
-          },
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Text("Profile"),
+        actions: <Widget>[
+          Container(
+              padding: EdgeInsets.only(right: 12), child: Icon(LineIcons.user))
+        ],
       ),
     );
   }

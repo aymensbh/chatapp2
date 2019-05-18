@@ -37,15 +37,16 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(LineIcons.user),
         activeIcon: Icon(LineIcons.user, color: Colors.white),
         title: Text(
-          "User",
+          "Profile",
           style: TextStyle(fontFamily: "Baloo", color: Colors.white),
-        )),
+        )
+        ),
     BubbledNavigationBarItem(
         bubbleColor: Colors.pink,
         icon: Icon(LineIcons.gear),
         activeIcon: Icon(LineIcons.gear, color: Colors.white),
         title: Text(
-          "Gear",
+          "Setting",
           style: TextStyle(fontFamily: "Baloo", color: Colors.white),
         )),
   ];
@@ -86,7 +87,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BubbledNavigationBar(
         items: barItems,
         controller: _controller2,
-        itemMargin: EdgeInsets.only(left: 4, right: 4),
+        itemMargin: EdgeInsets.only(right: 14),
+        iconRightMargin: 4,
         animationCurve: Curves.ease,
         animationDuration: Duration(milliseconds: 300),
         backgroundColor: Colors.white,

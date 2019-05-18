@@ -28,6 +28,23 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          PopupMenuButton(
+            itemBuilder: (ctx){
+              return [
+                PopupMenuItem(
+                  child: Text("About"),
+                ),
+                PopupMenuItem(
+                  child: Text("Github"),
+                ),
+                PopupMenuItem(
+                  child: Text("Facebook"),
+                )
+              ];
+            },
+          )
+        ],
         backgroundColor: Colors.indigoAccent,
         title: Text(
           "iChats",
@@ -38,11 +55,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           tabs: <Widget>[
             Tab(
               text: "Messages",
-              icon: Icon(LineIcons.comments_o),
+              // icon: Icon(LineIcons.comments_o),
             ),
             Tab(
               text: "Groups",
-              icon: Icon(LineIcons.group),
+              // icon: Icon(LineIcons.group),
             ),
           ],
         ),

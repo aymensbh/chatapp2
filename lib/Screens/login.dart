@@ -279,6 +279,7 @@ Future<void> _login(BuildContext context) async {
         .signInWithEmailAndPassword(email: email, password: password)
         .then((onValue) {
       print(onValue.uid);
+      Navigator.pop(context);
     }).catchError((onError) {
       print(onError);
       showDialog(

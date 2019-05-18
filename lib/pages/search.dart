@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -8,11 +9,19 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text("Search"),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+        title: Text("Search"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(LineIcons.search),
+            onPressed: (){},
+          )
+        ],
       ),
+
+      body: Container(),
     );
   }
 }
